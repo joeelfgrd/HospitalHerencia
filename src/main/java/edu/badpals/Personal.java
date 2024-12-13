@@ -8,8 +8,8 @@ import java.util.Objects;
 
 @Entity
 @Table(name="personal")
-@Inheritance(strategy= InheritanceType.JOINED)
-@DiscriminatorColumn(name="tipo_medico",discriminatorType=DiscriminatorType.INTEGER)
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="tipo_personal",discriminatorType=DiscriminatorType.INTEGER)
 @DiscriminatorValue(value="0")
 public class Personal {
     @Id
