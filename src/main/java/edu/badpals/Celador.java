@@ -5,12 +5,17 @@ import jakarta.persistence.*;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name="celador")
-public class Celador {
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private int id_celador;
+@Table(name="celadores")
+@DiscriminatorValue(value="4")
+public class Celador extends Personal {
     @Column
-    private String turno;   //podriamos poner un enum(mañana/tarde/noche)
+    private Turno turno;   //podriamos poner un enum(mañana/tarde/noche)
+    public Celador() {}
+
+    public Celador(String DNI, String NSS, String nombre, String direccion, String telefono, Turno turno) {
+        super(DNI, NSS, nombre, direccion, telefono);
+        this.turno = turno;
+    }
+
 
 }
