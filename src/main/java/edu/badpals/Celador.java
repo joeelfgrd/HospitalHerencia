@@ -8,8 +8,11 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Table(name="celadores")
 @DiscriminatorValue(value="4")
 public class Celador extends Personal {
-    @Column
-    private Turno turno;   //podriamos poner un enum(mañana/tarde/noche)
+    @ManyToOne
+    @JoinColumn(name="turno_id")
+    private Turno turno;
+
+    //podriamos poner un enum(mañana/tarde/noche)
     public Celador() {}
 
     public Celador(String DNI, String NSS, String nombre, String direccion, String telefono, Turno turno) {
@@ -17,5 +20,18 @@ public class Celador extends Personal {
         this.turno = turno;
     }
 
+    public Turno getTurno() {
+        return turno;
+    }
 
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
+
+    @Override
+    public String toString() {
+        return "Celador{" +
+                "turno=" + turno +
+                '}';
+    }
 }

@@ -14,7 +14,7 @@ public class Main {
         Medico medico1 = new Medico("12345678A","111111111","Soyun Medico","Mi casa","666111666");
         Medico medico2 = new Medico("12345BBBB","222222222","Otro Medicorl","Mi garaje","777888999");
         Enfermero enfermero1 = new Enfermero("00000000A","333333333","Este enfermero","Un box","980888777");
-        Celador celador = new Celador("00000000B","444444444","Este celador","Un sala de escobas","999888777", Turno.MANHANA);
+        Celador celador = new Celador("00000000B","444444444","Este celador","Un sala de escobas","999888777", );
         Celador celador2 = new Celador("00000000H","666666666","Este celador","Un sala de escobas","111222333", Turno.NOCHE);
         Limpiador limpiador = new Limpiador("00000000C","555555555","Un Limpiador","Otra sala de escobas","777888999");
 
