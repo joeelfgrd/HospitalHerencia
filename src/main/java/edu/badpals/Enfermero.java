@@ -2,6 +2,8 @@ package edu.badpals;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="enfermeros")
 @DiscriminatorValue(value="3")
@@ -18,6 +20,10 @@ public Enfermero(){}
     @ManyToOne
     @JoinColumn(name = "consulta_id", nullable = true)
     private Consulta consulta;
+
+    // Relación Muchos a Muchos con Planta: Un enfermero puede estar en muchas plantas y una planta puede tener muchos enfermeros
+    @ManyToMany(mappedBy = "enfermeros")
+    private List<Planta> plantas;
 
     public Medico getMedico() {
         return medico;

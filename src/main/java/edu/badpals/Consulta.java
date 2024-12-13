@@ -18,4 +18,9 @@ public class Consulta {
     // Una consulta puede tener muchos enfermeros,o no tener ninguno
     @OneToMany(mappedBy = "consulta")
     private List<Enfermero> enfermeros;
+
+    // Relación N:1 con Planta, muchas consultas pueden estar en una planta
+    @ManyToOne
+    @JoinColumn(name = "planta_id", nullable = false)
+    private Planta planta;
 }
