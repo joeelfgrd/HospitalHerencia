@@ -12,7 +12,6 @@ public class Celador extends Personal {
     @JoinColumn(name="turno_id")
     private Turno turno;
 
-    //podriamos poner un enum(mañana/tarde/noche)
     public Celador() {}
 
     public Celador(String DNI, String NSS, String nombre, String direccion, String telefono, Turno turno) {
