@@ -2,35 +2,65 @@ package edu.badpals;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name="celadores")
 @DiscriminatorValue(value="4")
 public class Celador extends Personal {
-    @ManyToOne
-    @JoinColumn(name="turno_id")
-    private Turno turno;
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinTable(name = "celadores_turnos",
+            joinColumns = @JoinColumn(name = "idcelador"),
+            inverseJoinColumns = @JoinColumn(name = "idturno"))
+    private List<Turno> turnos = new ArrayList();
 
     public Celador() {}
 
-    public Celador(String DNI, String NSS, String nombre, String direccion, String telefono, Turno turno) {
+    public Celador(String DNI, String NSS, String nombre, String direccion, String telefono) {
         super(DNI, NSS, nombre, direccion, telefono);
-        this.turno = turno;
     }
 
-    public Turno getTurno() {
-        return turno;
+    public List<Turno> getTurnos() {
+        return turnos;
     }
 
-    public void setTurno(Turno turno) {
-        this.turno = turno;
+    public void setTurnos(List<Turno> turnos) {
+        this.turnos = turnos;
+    }
+
+    public void addTurno(Turno turno) {
+        if(!turnos.contains(turno)){
+            turnos.add(turno);
+        }
+    }
+
+    public void removeTurno(Turno turno) {
+        if(turnos.contains(turno)){
+            turnos.remove(turno);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Celador celador)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(turnos, celador.turnos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), turnos);
     }
 
     @Override
     public String toString() {
         return "Celador{" +
-                "turno=" + turno +
+                "turnos=" + turnos +
                 '}';
     }
 }

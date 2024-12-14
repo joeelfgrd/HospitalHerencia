@@ -8,8 +8,7 @@ import java.time.LocalDate;
 public class OperacionVisita {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "operacion_seq")
-    @SequenceGenerator(name = "operacion_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "descripcion", nullable = false)
@@ -18,7 +17,7 @@ public class OperacionVisita {
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
 

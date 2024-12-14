@@ -3,6 +3,7 @@ package edu.badpals;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name="enfermeros")
@@ -14,16 +15,14 @@ public Enfermero(){}
         super(DNI, NSS, nombre, direccion, telefono);
     }
     // Relación (1:1) con medico
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "idmedico", nullable = true)
     private Medico medico;
     // Relación opcional con consulta, un enfermero puede no estar asociado a una consulta por eso le puse el nullable
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "consulta_id", nullable = true)
     private Consulta consulta;
 
-    // Relación Muchos a Muchos con Planta: Un enfermero puede estar en muchas plantas y una planta puede tener muchos enfermeros
-    @ManyToMany(mappedBy = "enfermeros")
-    private List<Planta> plantas;
 
     public Medico getMedico() {
         return medico;
@@ -33,5 +32,36 @@ public Enfermero(){}
         this.medico = medico;
     }
 
+    public Consulta getConsulta() {
+        return consulta;
+    }
 
+    public void setConsulta(Consulta consulta){
+        if(this.medico == null){
+            throw new IllegalStateException("No hay médico asignado, no se puede asignar consulta.");
+        }else{
+            this.consulta = consulta;
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Enfermero enfermero)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(medico, enfermero.medico) && Objects.equals(consulta, enfermero.consulta);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), medico, consulta);
+    }
+
+    @Override
+    public String toString() {
+        return "Enfermero{" +
+                "medico=" + medico +
+                ", consulta=" + consulta +
+                '}';
+    }
 }

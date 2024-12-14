@@ -13,8 +13,7 @@ import java.util.Objects;
 @DiscriminatorValue(value="0")
 public class Personal {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_id")
-    @SequenceGenerator(name = "seq_id",initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name="DNI", unique = true, nullable = false)

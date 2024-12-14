@@ -8,8 +8,7 @@ import java.util.List;
 public class Planta {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "planta_seq")
-    @SequenceGenerator(name = "planta_seq", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "numero_planta", nullable = false)
@@ -19,11 +18,34 @@ public class Planta {
     @OneToMany(mappedBy = "planta")
     private List<Consulta> consultas;
 
+    public Planta(int numeroPlanta) {
+        this.numeroPlanta = numeroPlanta;
+    }
 
-    //NO ESTOY SEGURO DE QUE SEA ASÍ
-    // Relación Muchos a Muchos con Enfermero: Una planta puede tener muchos enfermeros y un enfermero puede estar en varias plantas
-    @ManyToMany
-    @JoinTable(name = "planta_enfermero",joinColumns = @JoinColumn(name = "planta_id"),inverseJoinColumns = @JoinColumn(name = "enfermero_id"))
-    private List<Enfermero> enfermeros;
+    public Planta() {
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getNumeroPlanta() {
+        return numeroPlanta;
+    }
+
+    public void setNumeroPlanta(int numeroPlanta) {
+        this.numeroPlanta = numeroPlanta;
+    }
+
+    public List<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(List<Consulta> consultas) {
+        this.consultas = consultas;
+    }
 }
