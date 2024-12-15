@@ -12,7 +12,7 @@
         public Medico() {
         }
 
-        public Medico(String DNI, String NSS, String nombre, String direccion, String telefono, Consulta consulta) {
+        public Medico(String DNI, String NSS, String nombre, Direccion direccion, String telefono, Consulta consulta) {
             super(DNI, NSS, nombre, direccion, telefono);
             this.consulta = consulta;
         }

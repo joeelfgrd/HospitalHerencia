@@ -25,7 +25,7 @@ public class Limpiador extends Personal {
     public Limpiador() {
     }
 
-    public Limpiador(String DNI, String NSS, String nombre, String direccion, String telefono) {
+    public Limpiador(String DNI, String NSS, String nombre, Direccion direccion, String telefono) {
         super(DNI, NSS, nombre, direccion, telefono);
     }
 

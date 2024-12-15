@@ -18,7 +18,7 @@ public class Celador extends Personal {
 
     public Celador() {}
 
-    public Celador(String DNI, String NSS, String nombre, String direccion, String telefono) {
+    public Celador(String DNI, String NSS, String nombre, Direccion direccion, String telefono) {
         super(DNI, NSS, nombre, direccion, telefono);
     }
 

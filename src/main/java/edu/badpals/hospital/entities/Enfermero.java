@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Enfermero extends Personal {
 public Enfermero(){}
 
-    public Enfermero(String DNI, String NSS, String nombre, String direccion, String telefono) {
+    public Enfermero(String DNI, String NSS, String nombre, Direccion direccion, String telefono) {
         super(DNI, NSS, nombre, direccion, telefono);
     }
     // Relación (1:1) con medico
