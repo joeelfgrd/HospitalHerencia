@@ -2,6 +2,8 @@
 
 Este proyecto muestra los tres tipos de estrategias de herencia en Hibernate: `JOINED`, `SINGLE_TABLE` y `TABLE_PER_CLASS`. Cada estrategia se implementa en su propia rama y se prueba generando las correspondientes estructuras de tabla en MySQL. A continuación, se explican brevemente las estrategias, se muestran capturas justificativas para el supuesto de la BD de un hospital y se analiza cuál es la más eficiente en este caso concreto.
 
+## Diagrama UML
+![Captura uml](./media/umlHospitalcaptura.png)
 ---
 
 ## 1. Estrategias
