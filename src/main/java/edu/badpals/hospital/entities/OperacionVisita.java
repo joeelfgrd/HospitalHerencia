@@ -1,4 +1,4 @@
-package edu.badpals;
+package edu.badpals.hospital.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package edu.badpals;
+package edu.badpals.hospital.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

@@ -1,11 +1,11 @@
-import edu.badpals.*;
+package edu.badpals.hospital;
+
+import edu.badpals.hospital.entities.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-import javax.swing.text.html.parser.Entity;
 import java.time.LocalDate;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {

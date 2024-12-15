@@ -1,6 +1,5 @@
-package edu.badpals;
+package edu.badpals.hospital.entities;
 
-import com.sun.istack.NotNull;
 import jakarta.persistence.*;
 
 import java.util.Objects;

@@ -1,8 +1,7 @@
-package edu.badpals;
+package edu.badpals.hospital.entities;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 import java.util.Objects;
 
 @Entity

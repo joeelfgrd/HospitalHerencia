@@ -1,7 +1,7 @@
-package edu.badpals;
+package edu.badpals.hospital.entities;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

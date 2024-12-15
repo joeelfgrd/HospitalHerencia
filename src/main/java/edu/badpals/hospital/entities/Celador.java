@@ -1,12 +1,10 @@
-package edu.badpals;
+package edu.badpals.hospital.entities;
 
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name="celadores")
