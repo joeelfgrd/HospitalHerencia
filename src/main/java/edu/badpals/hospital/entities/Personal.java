@@ -4,11 +4,10 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
-
 @Entity
 @Table(name="personal")
 @Inheritance(strategy= InheritanceType.JOINED)
-@DiscriminatorColumn(name="tipo_medico",discriminatorType=DiscriminatorType.INTEGER)
+@DiscriminatorColumn(name="tipo_medico", discriminatorType=DiscriminatorType.INTEGER)
 @DiscriminatorValue(value="0")
 public class Personal {
     @Id
@@ -21,15 +20,15 @@ public class Personal {
     private String NSS;
     @Column(name="nombre")
     private String nombre;
-    @Column(name="direccion")
-    private String direccion;
+    @Embedded
+    private Direccion direccion;
     @Column(name="telefono")
     private String telefono;
 
     public Personal() {
     }
 
-    public Personal(String DNI, String NSS, String nombre, String direccion, String telefono) {
+    public Personal(String DNI, String NSS, String nombre, Direccion direccion, String telefono) {
         this.DNI = DNI;
         this.NSS = NSS;
         this.nombre = nombre;
@@ -69,11 +68,11 @@ public class Personal {
         this.nombre = nombre;
     }
 
-    public String getDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
 
@@ -92,7 +91,7 @@ public class Personal {
                 ", DNI='" + DNI + '\'' +
                 ", NSS='" + NSS + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", direccion='" + direccion + '\'' +
+                ", direccion=" + direccion +
                 ", telefono='" + telefono + '\'' +
                 '}';
     }
